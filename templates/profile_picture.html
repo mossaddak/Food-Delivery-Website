@@ -1,0 +1,39 @@
+    
+    <div class="profilePictureModal">
+
+        <!-- modal close btn -->
+        <div class="modal_close">
+            <button class="modalCloseBtn"><i class="fas fa-times"></i></button>
+        </div>
+        
+
+
+        <form action="{% url 'ChangeProfilePicture' %}" method="POST" enctype="multipart/form-data">
+
+            <!-- profile picture preview -->
+            <div class="profile_picture_preview_container">
+                
+                <div id="display-image" style="background-image:url({{ request.user.get_profile_picture }}) ;"></div>
+            </div>
+            
+
+            {% csrf_token %}
+            <div class="profile_picture_input_container">
+                Leave profile image:&nbsp; 
+                <label class="profile_image_container">
+                    Choose image  &nbsp;<i class="fas fa-hand-pointer"></i>
+                    <input type="file" name="profile_image" id="image-input" accept="image/jpeg, image/png, image/jpg" required> 
+                </label>
+            </div>   
+            
+            <div class="submit profile_picture_submit_btn_container">
+                <button type="submit" class="submit_btn">submit</button>
+            </div>
+            
+
+
+            
+        </form>
+
+
+    </div>

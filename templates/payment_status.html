@@ -1,0 +1,59 @@
+
+<!doctype html>
+{% load static %}
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="refresh" content="url={% url 'AllFoodItem' %}">
+
+    <!--========== CSS ==========-->
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+    <!--========== Font Awesome ==========-->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+
+    <title>Payment Status</title>
+  </head>
+  <body>
+
+    <header class="l-header" id="header">
+      <nav class="nav bd-container">
+          <a href="/" class="nav__logo">Tasty</a>
+  
+          <div class="nav__menu" id="nav-menu">
+              <ul class="nav__list">
+                  <li class="nav__item"><a href="/" class="nav__link">Home</a></li>
+                  <li class="nav__item"><a href="#about" class="nav__link">About</a></li>
+                  <li class="nav__item"><a href="#services" class="nav__link">Services</a></li>
+                  <li class="nav__item"><a href="#contact" class="nav__link">Contact</a></li>
+  
+  
+                  <li><i class='bx bx-moon change-theme' id="theme-button"></i></li>
+              </ul>
+          </div>
+  
+          <div class="nav__toggle" id="nav-toggle">
+              <i class='bx bx-menu'></i>
+          </div>
+      </nav>
+  </header>
+
+
+    <section class="section bd-container">
+        {% if messages %}
+        {% include 'message.html' %}
+        {% endif %}
+    </section>
+    
+
+  </body>
+</html>
+
+
+
+
+
+

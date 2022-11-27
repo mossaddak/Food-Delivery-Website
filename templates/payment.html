@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{{foodDetails.Name}}{% endblock %}
+{% block auto_redirect %} <meta http-equiv="refresh" content="5; url={% url '/' %}"> {% endblock %}
+
+{% block content %}
+<section class="section bd-container">
+
+    {% if messages %}
+        {% include 'message.html' %}
+        {% endif %}
+
+    Payment... 
+</section>
+{% endblock %}
+
+
+
+
+
+
+

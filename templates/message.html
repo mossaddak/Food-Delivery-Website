@@ -1,0 +1,35 @@
+{% for message in messages %}
+{% if message.tags == 'warning' %}
+<div class="warning_message message" style="font-size: 13px;" role="alert">
+
+    <!-- message -->
+    <div>
+        <i class="fas fa-exclamation-triangle"></i>
+        {{ message }}
+    </div>
+
+    <!-- button -->
+    <div class="message_cross_btn_container message_cross_warning_btn_container">
+        <button class="message_cross_btn"><i class="fas fa-times"></i></button>
+    </div>
+    
+</div>
+
+{% else %}
+
+<div class="info_message message" style="font-size: 13px;" role="alert">
+
+    <!-- message -->
+    <div>
+        <i class="fas fa-check-circle"></i>
+        {{ message }}
+    </div>
+    
+    <!-- button -->
+    <div class="message_cross_btn_container message_cross_info_btn_container">
+        <button class="message_cross_btn"><i class="fas fa-times"></i></button>
+    </div>
+</div>
+
+{% endif %}
+{% endfor %}

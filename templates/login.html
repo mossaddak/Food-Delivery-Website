@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<section class="section bd-container login_page">
+    <div class="form_container">
+
+        <h2 class="form_heading">Login</h2>
+
+        {% if messages %}
+        {% include 'message.html' %}
+        {% endif %}
+
+
+        <form action="" method="POST" class="custom_form">
+            {% csrf_token %}
+
+            <!-- username -->
+            <div class="form_content_container">
+                <label>Username</label>
+                <input type="text" name="username"required>
+                <p>{{form.username.errors}}</p>
+            </div>
+
+            <!-- password -->
+            <div class="form_content_container">
+                <label>Password</label>
+                <input type="password" name="password" required>
+                <p>{{form.password.errors}}</p>
+            </div>
+
+            <div class="form_content_container">
+                <div class="forget_account_continer">
+                    <a href="{% url 'ForgetPassword' %}">Did you forget the password?</a>
+                    <a href="{% url 'SingUp' %}" class="dont_have_account">Don't have any account?</a>
+                </div>
+                
+            </div>
+
+            <div class="form_content_container">
+                <button type="submit" class="submit_btn">Login</button>
+            </div>
+        </form>
+
+        <hr>
+
+        <div class="create_account_with_container">
+            <p>Login with -</p>
+            <div class="create_account_with_BTN_container">
+                <a href="#!"><i class="fab fa-google"></i></a>
+                <a href="#!"><i class="fab fa-facebook-square"></i></a>
+                <a href="#!"><i class="fab fa-github-square"></i></a>
+                <a href="#!"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

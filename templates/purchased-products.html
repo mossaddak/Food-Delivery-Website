@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Purchased Products{% endblock %}
+
+{% block content %}
+
+<section class=" section bd-container">
+    {% if messages %}
+        {% include 'message.html' %}
+    {% endif %}
+</section>
+{% endblock %}

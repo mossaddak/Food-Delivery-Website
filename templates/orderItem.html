@@ -1,0 +1,133 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{{foodDetails.Name}}{% endblock %}
+
+{% block content %}
+<section class="section bd-container">
+
+    <div class="form_container">
+
+        <h2 class="form_heading">{{foodDetails.Name}}</h2>
+
+        {% if messages %}
+        {% include 'message.html' %}
+        {% endif %}
+
+        <div class="order_image">
+            <img src="{{foodDetails.Image.url}}" alt="Food image">
+        </div>
+
+
+        <form action="{% url 'MakePayment' foodDetails.pk %}" method="POST" class="custom_form">
+            {% csrf_token %}
+
+            <!-- username -->
+            <!-- <div class="form_content_container">
+                <label>Username</label>
+                <input type="text" name="username"required>
+                <p>{{form.username.errors}}</p>
+            </div> -->
+
+            <!-- order qty -->
+            <div class="form_content_container">
+                <label>Order Quantity</label>
+                <input type="number" name="order_qty" required>
+            </div>
+
+            <!-- full name -->
+            <div class="form_content_container">
+                <label>Full Name</label>
+
+                {% if user.first_name == 'None' or user.last_name == 'None' %}
+                <input type="text" name="full_name"required>
+
+                {% else %}
+                <input type="text" name="full_name" value="{{user.first_name}} {{user.last_name}}" required>
+                {% endif %}
+            </div>
+
+            <!-- phone number -->
+            <div class="form_content_container">
+                <label>Phone Number</label>
+                {% if user.phone_number == 'None' %}
+                <input type="number" name="phone_number" required>
+                {% else %}
+                <input type="number" name="phone_number" value="{{user.phone_number}}" required>
+                {% endif %}
+            </div>
+
+            <!-- post office -->
+            <div class="form_content_container">
+                <label>Post Office</label>
+
+                {% if user.post_office == 'None' %}
+                <input type="text" name="post_office" required>
+                {% else %}
+                <input type="text" name="post_office" value="{{user.post_office}}" required>
+                {% endif %}
+            </div>
+
+            <!-- thana -->
+            <div class="form_content_container">
+                <label>Thana</label>
+                {% if user.thana == 'None' %}
+                <input type="text" name="thana" required>
+                {% else %}
+                <input type="text" name="thana" value="{{user.thana}}" required>
+                {% endif %}
+            </div>
+
+            <!-- district -->
+            <div class="form_content_container">
+                <label>District</label>
+                {% if user.district == 'None' %}
+                <input type="text" name="district"required>
+                {% else %}
+                <input type="text" name="district" value="{{user.district}}" required>
+                {% endif %}
+            </div>
+            
+            <!-- zipcode -->
+            <div class="form_content_container">
+                <label>Zipcode</label>
+
+                {% if user.zipcode == None %}
+                <input type="text" name="zipcode"  required>
+                
+                {% else %}
+                <input type="text" value="{{user.zipcode}}" name="zipcode" required>
+                {% endif %}
+                
+            </div>
+
+            <!-- address -->
+            <div class="form_content_container">
+                <label>Address</label>
+                {% if user.zipcode == None %}
+                <input type="text" name="address" required>
+                {% else %}
+                <input type="text" name="address" value="{{user.address}}" required>
+                {% endif %}
+            </div>
+
+
+            <!-- <div class="form_content_container">
+                <div class="forget_account_continer">
+                    <a href="{% url 'ForgetPassword' %}">Did you forget the password?</a>
+                    <a href="{% url 'SingUp' %}" class="dont_have_account">Don't have any account?</a>
+                </div>
+                
+            </div> -->
+
+            <div class="form_content_container">
+                <button type="submit" class="submit_btn">Make Payment</button>
+            </div>
+        </form>
+    </div>
+</section>
+{% endblock %}
+
+
+
+
+

@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Food Item{% endblock %}
+
+{% block content %}
+
+<section class=" section bd-container" id="menu">
+
+
+
+    <!-- category btn -->
+    <div class="category_content_container">
+        <ul class="category_btn_container">
+            <li class="category_btn category_btn_active" data-filter="allItem">All Item</li>
+
+            {% for foodCategory in foodCategory %}
+            <li class="category_btn" data-filter="{{foodCategory.CategoryName}}">{{foodCategory.CategoryName}}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+
+    <!-- category container -->
+    <div class="menu__container bd-grid">
+        {% for foodItem in foodMenu %}
+        <div class="menu__content burger service_itembox allItem {{foodItem.Category.CategoryName}}">
+            <img src="{{foodItem.Image.url}}" alt="food image" class="menu__img">
+            <h3 class="menu__name">{{foodItem.Name}}</h3>
+            <span class="menu__detail">{{foodItem.Subtitle}}</span>
+            <span class="menu__preci">${{foodItem.Price}}</span>
+            <a href="{% url 'QuickView' foodItem.pk %}" class="button menu__button"><i class='bx bx-cart-alt'></i></a>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %} 

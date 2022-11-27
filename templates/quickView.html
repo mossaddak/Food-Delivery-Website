@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{{foodDetails.Name}}{% endblock %}
+
+{% block content %}
+<section class="section bd-container">
+
+    <div class="quick_view_container">
+
+        <div class="quick_view_left_side">
+            <img src="{{foodDetails.Image.url}}" class="quick_view_product_image" alt="product image">
+        </div>
+
+        <div class="quick_view_right_side">
+            <p class="quick_view_product_id">ID:{{foodDetails.pk}}</p>
+            <h2>{{foodDetails.Name}}</h2>
+            <p>{{foodDetails.Subtitle}} Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptates ab iusto eos dolores repellendus, rerum fugiat eligendi accusamus, labore libero doloremque illum doloribus tempora cum ipsa, repudiandae dolor nisi magnam?</p>
+            <h3>${{foodDetails.Price}}</h3>
+            <input type="number" value="1" class="quick_view_qty_input" max="5" min="1">
+            <div class="quick_view_buy_btn_cotainer">
+                <a href="{% url 'OrderItem' foodDetails.pk %}" class="quick_view_buy_btn">Buy Item</a>
+            </div>
+            
+        </div>
+    </div>
+</section>
+{% endblock %}     

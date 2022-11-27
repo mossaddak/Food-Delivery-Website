@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+        
+<!--========== SCROLL TOP ==========-->
+<a href="#" class="scrolltop" id="scroll-top">
+    <i class='bx bx-chevron-up scrolltop__icon'></i>
+</a>
+
+<main class="l-main">
+    <!--========== HOME ==========-->
+    {% include 'home.html' %}
+    
+
+    <!--========== ABOUT ==========-->
+    {% include 'about.html' %}
+    
+
+    <!--========== SERVICES ==========-->
+    {% include 'service.html' %}
+    
+
+    <!--========== Food MENU ==========-->
+    {% include 'food_manu.html' %}
+    
+
+    <!--===== APP =======-->
+    {% include 'app.html' %}
+
+    <!--========== CONTACT US ==========-->
+    {% include 'contact.html' %}
+
+</main>
+
+
+{% endblock %}

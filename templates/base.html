@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!--========== icon ==========-->
+        <link rel="icon" type="image/icon type" href="{% static 'img/1_fab-icon.png' %}">
+
+        <!--========== AUTO REFRESSHH ==========-->
+        {% block auto_redirect %} {% endblock %}
+
+        <!--========== BOX ICONS ==========-->
+        <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+
+        <!--========== Font Awesome ==========-->
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+
+        <!--========== CSS ==========-->
+        <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+        
+        <!--========== google jaquery cdn ==========-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+        <title>{% block title %}Home{% endblock %}</title>
+    </head>
+    <body>
+
+        <!--========== SCROLL TOP ==========-->
+        <a href="#" class="scrolltop" id="scroll-top">
+            <i class='bx bx-chevron-up scrolltop__icon'></i>
+        </a>
+
+        <!--========== HEADER ==========-->
+        {% include 'header.html' %}
+
+        {% block content %}
+
+        {% endblock %}
+
+        <!--========== FOOTER ==========-->
+        {% include 'footer.html' %}
+
+        <!--========== SCROLL REVEAL ==========-->
+        <script src="https://unpkg.com/scrollreveal"></script>
+
+        <!--========== MAIN JS ==========-->
+        <script src="{% static 'js/main.js' %}"></script>
+
+        <!--========== MAIN JS ==========-->
+        <script src="{% static 'js/message.js' %}"></script>
+
+        <!--========== DRAG AND DROP ==========-->
+        <script src="{% static 'js/profile-picture-modal.js' %}"></script>
+
+        <!--========== FOOD CATEGORY ==========-->
+        <script src="{% static 'js/category.js' %}"></script>
+
+    </body>
+</html>

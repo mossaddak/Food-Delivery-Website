@@ -1,0 +1,21 @@
+{% load static %}
+<section class="menu section bd-container" id="menu">
+    <span class="section-subtitle">Special</span>
+    <h2 class="section-title">Menu of the week</h2>
+
+    <div class="menu__container bd-grid">
+
+
+        {% for foodItem in foodMenu|slice:":3" %}
+        <div class="menu__content">
+            <img src="{{foodItem.Image.url}}" alt="" class="menu__img">
+            <h3 class="menu__name">{{foodItem.Name}}</h3>
+            <span class="menu__detail">{{foodItem.Subtitle}}</span>
+            <span class="menu__preci">${{foodItem.Price}}</span>
+            <a href="{% url 'QuickView' foodItem.pk %}" class="button menu__button"><i class='bx bx-cart-alt'></i></a>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="see_all_btn"><a href="{% url 'AllFoodItem' %}">See All</a></div>
+</section>
