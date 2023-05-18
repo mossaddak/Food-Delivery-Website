@@ -5,20 +5,15 @@
 {% block content %}
 
 <section class=" section bd-container" id="menu">
-
-
-
     <!-- category btn -->
     <div class="category_content_container">
         <ul class="category_btn_container">
             <li class="category_btn category_btn_active" data-filter="allItem">All Item</li>
-
             {% for foodCategory in foodCategory %}
             <li class="category_btn" data-filter="{{foodCategory.CategoryName}}">{{foodCategory.CategoryName}}</li>
             {% endfor %}
         </ul>
     </div>
-
 
     <!-- category container -->
     <div class="menu__container bd-grid">

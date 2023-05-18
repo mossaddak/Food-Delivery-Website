@@ -24,6 +24,7 @@ urlpatterns = [
     path('', include('foodDeliveryApp.urls')),
     path('', include('userProfileApp.urls')),
     path('', include('PaymentApp.urls')),
+    path('accounts/', include('allauth.urls')),
     
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

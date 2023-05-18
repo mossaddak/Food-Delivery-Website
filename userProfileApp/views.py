@@ -70,7 +70,7 @@ def Login(request):
                 )
                 if user:
                     login(request, user)
-                    return HttpResponseRedirect(request.META.get('HTTP_REFERER')) 
+                    return redirect("Login") 
 
                 else:
                     messages.warning(request, "You've given wrong information, try again!") 

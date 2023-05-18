@@ -42,11 +42,19 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     'foodDeliveryApp',
     'userProfileApp',
     'PaymentApp',
     'adminDashboard',
     'social_django',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+
+    # ... include the providers you want to enable:
+    'allauth.socialaccount.providers.google',
+    
 ]
 
 MIDDLEWARE = [
@@ -84,6 +92,14 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'foodDeliveryProject.wsgi.application'
+
+AUTHENTICATION_BACKENDS = [
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
 
 
 # Database
@@ -134,20 +150,35 @@ USE_I18N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/4.1/howto/static-files/
+
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [STATIC_DIR]
 
-# Default primary key field type
-# https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
+
+SITE_ID = 1
+LOGOUT_URL = '/' 
+LOGOUT_REDIRECT_URL = '/'
+
+# Provider specific settings
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'APP': {
+            'client_id': '123',
+            'secret': '456',
+            'key': ''
+        }
+    }
+}
+
+
+
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'userProfileApp.User'
 
 
-
+#password reset purpose
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com' 
 EMAIL_PORT = '587'
@@ -156,41 +187,20 @@ EMAIL_HOST_PASSWORD = 'gjctqqokkygepqfn'
 EMAIL_USE_TLS = True
 
 
-#social media app custom settings
-AUTHENTICATION_BACKENDS = (
-    'social_core.backends.facebook.FacebookOAuth2',
-    'social_core.backends.twitter.TwitterOAuth',
-    'social_core.backends.github.GithubOAuth2',
 
-    #google
-    'social_core.backends.google.GoogleOAuth2',
-
-    'django.contrib.auth.backends.ModelBackend',
-)
-
-# LOGIN_URL = 'login'
-# LOGIN_REDIRECT_URL = 'home'
-# LOGOUT_URL = 'logout'
-# LOGOUT_REDIRECT_URL = 'login'
-# SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '468866118576-lm45l8q8brcs9h6qgp3pmblsq1dkrjpc.apps.googleusercontent.com'
-# SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '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'
 
 #google login
-LOGIN_URL = '/'
-LOGIN_REDIRECT_URL = '/'
-LOGOUT_URL = '/' 
-LOGOUT_REDIRECT_URL = '/'
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '468866118576-gv4kjeb4fiqi73a225g3dh7ks0g2gg3g.apps.googleusercontent.com'
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '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'
+# LOGIN_URL = '/'
+# LOGIN_REDIRECT_URL = '/'
+# LOGOUT_URL = '/' 
+# LOGOUT_REDIRECT_URL = '/'
+# SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '468866118576-gv4kjeb4fiqi73a225g3dh7ks0g2gg3g.apps.googleusercontent.com'
+# SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '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'
                                     
                                 
 
 
-#facebook login
-# LOGOUT_URL = '/'
-# LOGOUT_REDIRECT_URL = '/'
-# SOCIAL_AUTH_FACEBOOK_KEY = '1402287247175879'
-# SOCIAL_AUTH_FACEBOOK_SECRET = '80a29b949c819b0cd737b429917e09e3'
+
 
 SOCIAL_AUTH_FACEBOOK_KEY = '5434613996647787'  # App ID
 SOCIAL_AUTH_FACEBOOK_SECRET = '9e1151b0b9e850c1d341a38fef19f6b5'  # App Secret
